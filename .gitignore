@@ -4,3 +4,4 @@
 .project
 .pydevproject
 libspecs
+modules/__pycache__

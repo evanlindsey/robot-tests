@@ -24,4 +24,3 @@ class GitHubPage(Pages):
     def click_repositories_tab(self):
         seleniumlib = BuiltIn().get_library_instance('Selenium2Library')
         seleniumlib.click_element("xpath: {0}".format(self.REPOSITORIES_TAB))
-        
