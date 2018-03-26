@@ -2,7 +2,7 @@
 Resource                  pages.robot
 
 *** Variables ***
-${URL}                    https://github.com/
+${URL}                    https://github.com
 ${OVERVIEW_TAB}           //*[@id=\"js-pjax-container\"]/div/div[2]/div[2]/nav/a[1]
 ${REPOSITORIES_TAB}       //*[@id=\"js-pjax-container\"]/div/div[2]/div[2]/nav/a[2]
 ${STARS_TAB}              //*[@id=\"js-pjax-container\"]/div/div[2]/div[2]/nav/a[3]

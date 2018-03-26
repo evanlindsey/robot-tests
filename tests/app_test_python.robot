@@ -1,6 +1,6 @@
 *** Settings ***
 Library                             Selenium2Library
-Library                             GitHubPage
+Library                             ../modules/GitHubPage.py
 Test Teardown                       Selenium2Library.Close all browsers
 
 *** Variables ***
@@ -17,7 +17,7 @@ Test Stuff
 *** Keywords ***
 Browser is opened to github page
                                     ${BASE_URL} =                             GitHubPage.Get URL
-                                    GitHubPage.Go to page                     ${BASE_URL}${USER}
+                                    GitHubPage.Go to page                     ${BASE_URL}/${USER}
 Github page should be open
                                     GitHubPage.Is page open                   ${USER}
 Profile avatar should exist
