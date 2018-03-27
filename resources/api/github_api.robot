@@ -8,5 +8,5 @@ ${API}                https://api.github.com
 Get API
                       [Return]                  ${API}
 Get users endpoint
-                      [Arguments]               ${USER}
-                      [Return]                  /users/${USER}
+                      [Arguments]               ${user}
+                      [Return]                  /users/${user}

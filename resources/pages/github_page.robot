@@ -13,10 +13,10 @@ ${FOLLOWING_TAB}          //*[@id=\"js-pjax-container\"]/div/div[2]/div[2]/nav/a
 Get URL
                           [Return]                                                     ${URL}
 Get user page
-                          [Arguments]                                                  ${USER}
-                          [Return]                                                     ${URL}/${USER}
+                          [Arguments]                                                  ${user}
+                          [Return]                                                     ${URL}/${user}
 Get avatar source
-                          ${AVATAR} =                                                  Selenium2Library.Get element attribute    class: avatar    src
-                          Log to console                                               ${AVATAR}
+                          ${avatar} =                                                  Selenium2Library.Get element attribute    class: avatar    src
+                          Log to console                                               ${avatar}
 Click repositories tab
                           Selenium2Library.Click element                               xpath: ${REPOSITORIES_TAB}

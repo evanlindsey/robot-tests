@@ -6,8 +6,8 @@ Resource             ../browser.robot
 
 *** Keywords ***
 Go to page
-                     [Arguments]                            ${URL}
-                     browser.Open test browser              ${URL}
+                     [Arguments]                            ${url}
+                     browser.Open test browser              ${url}
 Is page open
-                     [Arguments]                            ${TERM}
-                     Selenium2Library.Wait for condition    return document.title.includes('${TERM}')    5 seconds
+                     [Arguments]                            ${term}
+                     Selenium2Library.Wait for condition    return document.title.includes('${term}')    5 seconds

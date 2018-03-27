@@ -3,18 +3,18 @@ Library                        Collections
 Library                        RequestsLibrary
 
 *** Variables ***
-${RESP}                        None
+${RESP}                        ${None}
 
 *** Keywords ***
 Create session at API base
-                               [Arguments]                        ${API}
-                               RequestsLibrary.Create Session     base                   ${API}
+                               [Arguments]                        ${api}
+                               RequestsLibrary.Create Session     base                           ${api}
 Make request to endpoint
-                               [Arguments]                        ${ENDPOINT}
-                               ${resp} =                          Get Request            base       ${ENDPOINT}
-                               Set Test Variable                  ${RESP}                ${resp}
+                               [Arguments]                        ${endpoint}
+                               ${RESP} =                          RequestsLibrary.Get Request    base      ${endpoint}
+                               Set Test Variable                  ${RESP}
 Is response 200
-                               Should Be Equal As Strings         ${RESP.status_code}    200
+                               Should Be Equal As Strings         ${RESP.status_code}            200
 Does response contain value
-                               [Arguments]                        ${VAL}
-                               Dictionary Should Contain Value    ${RESP.json()}         ${VAL}
+                               [Arguments]                        ${val}
+                               Dictionary Should Contain Value    ${RESP.json()}                 ${val}
