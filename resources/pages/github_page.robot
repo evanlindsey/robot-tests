@@ -12,6 +12,9 @@ ${FOLLOWING_TAB}          //*[@id=\"js-pjax-container\"]/div/div[2]/div[2]/nav/a
 *** Keywords ***
 Get URL
                           [Return]                                                     ${URL}
+Get user page
+                          [Arguments]                                                  ${USER}
+                          [Return]                                                     ${URL}/${USER}
 Get avatar source
                           ${AVATAR} =                                                  Selenium2Library.Get element attribute    class: avatar    src
                           Log to console                                               ${AVATAR}

@@ -1,17 +1,14 @@
 *** Settings ***
-Library                                   Collections
-Library                                   RequestsLibrary
 Resource                                  ../resources/pages/github_page.robot
-Resource                                  ../resources/api.robot
+Resource                                  ../resources/api/github_api.robot
 Test Teardown                             Selenium2Library.Close all browsers
 
 *** Variables ***
 ${USER}                                   evanlindsey
-${RESP}                                   None
 
 *** Test Cases ***
 Test Stuff
-                                          Given browser is opened to github page
+                                          Given browser is opened to user github page
 
                                           Then github page should be open
                                           And profile avatar should exist
@@ -21,7 +18,7 @@ Test Stuff
                                           Then repositories tab should be open
 
 Get Requests
-                                          Given session is created with endpoint
+                                          Given session is created with API base
 
                                           When request is made to endpoint
 
@@ -29,25 +26,25 @@ Get Requests
                                           And response data should contain user name
 
 *** Keywords ***
-Browser is opened to github page
-                                          ${base_url} =                                 github_page.Get URL
-                                          pages.Go to page                              ${base_url}/${USER}
+Browser is opened to user github page
+                                          ${user_url} =                                  github_page.Get user page        ${USER}
+                                          pages.Go to page                               ${user_url}
 Github page should be open
-                                          pages.Is page open                            ${USER}
+                                          pages.Is page open                             ${USER}
 Profile avatar should exist
                                           github_page.Get avatar source
 Repositories tab is clicked
                                           github_page.Click repositories tab
 Repositories tab should be open
-                                          pages.Is page open                            Repositories
+                                          pages.Is page open                             Repositories
 
-Session is created with endpoint
-                                          ${base_api} =                                 api.Get API
-                                          Create Session                                github                 ${base_api}
+Session is created with API base
+                                          ${base_api} =                                  github_api.Get API
+                                          api.Create Session at API base                 ${base_api}
 Request is made to endpoint
-                                          ${resp} =                                     Get Request            github         /users/${USER}
-                                          Set Test Variable                             ${RESP}                ${resp}
+                                          ${users_endpoint} =                            github_api.Get users endpoint    ${USER}
+                                          api.Make request to endpoint                   ${users_endpoint}
 Response should be 200
-                                          Should Be Equal As Strings                    ${RESP.status_code}    200
+                                          api.Is response 200
 Response data should contain user name
-                                          Dictionary Should Contain Value               ${RESP.json()}         ${USER}
+                                          api.Does response contain value                ${USER}
