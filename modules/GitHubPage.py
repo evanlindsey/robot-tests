@@ -16,6 +16,9 @@ class GitHubPage(Pages):
     
     def get_url(self):
         return self.URL
+    
+    def get_user_page(self, user):
+        return "{0}/{1}".format(self.URL, user)
 
     def get_avatar_source(self):
         seleniumlib = BuiltIn().get_library_instance('Selenium2Library')

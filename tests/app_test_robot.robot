@@ -28,7 +28,7 @@ Get Requests
 
 *** Keywords ***
 Browser is opened to user github page
-                                          ${user_url} =                                  github_page.Get user page        ${USER}
+                                          ${user_url} =                                  github_page.Get user page       ${USER}
                                           pages.Go to page                               ${user_url}
 Github page should be open
                                           pages.Is page open                             ${USER}
@@ -43,8 +43,8 @@ Session is created with API base
                                           ${base_api} =                                  github_api.Get API
                                           api.Create Session at API base                 ${base_api}
 Request is made to endpoint
-                                          ${users_endpoint} =                            github_api.Get users endpoint    ${USER}
-                                          api.Make request to endpoint                   ${users_endpoint}
+                                          ${user_endpoint} =                             github_api.Get user endpoint    ${USER}
+                                          api.Make request to endpoint                   ${user_endpoint}
 Response should be 200
                                           api.Is response 200
 Response data should contain user name
