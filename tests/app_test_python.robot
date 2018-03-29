@@ -1,10 +1,11 @@
 *** Settings ***
 Library                                  Selenium2Library
 Library                                  ../modules/GitHubPage.py
+Variables                                ../data/variables.py
 Test Teardown                            Selenium2Library.Close all browsers
 
 *** Variables ***
-${USER}                                  evanlindsey
+
 
 *** Test Cases ***
 Test Stuff

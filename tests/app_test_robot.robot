@@ -1,10 +1,11 @@
 *** Settings ***
 Resource                                  ../resources/pages/github_page.robot
 Resource                                  ../resources/api/github_api.robot
+Variables                                 ../data/variables.py
 Test Teardown                             Selenium2Library.Close all browsers
 
 *** Variables ***
-${USER}                                   evanlindsey
+
 
 *** Test Cases ***
 Test Stuff
